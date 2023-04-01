@@ -1,0 +1,561 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+
+
+ 
+<head>
+    <title>{{ info.website.title }}</title>
+    <link rel="icon" href="{% static 'home_app/images/icon.png' %}" type="image/gif" sizes="16x16">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Kyros - Personal Website" name="description" />
+    <meta content="" name="keywords" />
+    <meta content="" name="author" />
+    <!-- CSS Files
+    ================================================== -->
+    <link href="{% static 'home_app/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" id="bootstrap" />
+    <link href="{% static 'home_app/css/plugins.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'home_app/css/style.css' %}" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --primary-color: #CF1F1F;
+            --primary-color-rgb: 207, 31, 31;
+        }
+    </style>
+    <link href="{% static 'home_app/css/coloring.css' %}" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="onepage dark-scheme">
+    <div id="wrapper">
+        <!-- header begin -->
+        <header class="transparent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="de-flex sm-pt10">
+                            <div class="de-flex-col">
+                                <div class="de-flex-col">
+                                    <!-- logo begin -->
+                                    <div id="logo">
+                                        <a href="#top">
+                                            <img alt="" class="logo" src="{% static 'home_app/images/logo.png' %}" />
+                                            <img alt="" class="logo-2" src="{% static 'home_app/images/logo.png' %}" />
+                                        </a>
+                                    </div>
+                                    <!-- logo close -->
+                                </div>
+                            </div>
+                            <div class="de-flex-col header-col-right">
+                                <ul id="mainmenu">
+                                    <li><a class="active" href="#top">خانه<span></span></a></li>
+                                    <li><a href="#section-about">درباره من<span></span></a></li>
+                                    <li><a href="#section-services">خدمات<span></span></a></li>
+                                    <!-- <li><a href="#section-portfolio">نمونه کار<span></span></a></li> -->
+                                    <li><a href="#section-resume">رزومه<span></span></a></li>
+                                    <!-- <li><a href="#section-blog">وبلاگ<span></span></a></li> -->
+                                    <li><a href="#section-contact">تماس با ما<span></span></a></li>
+                                </ul>
+                                <div class="menu_side_area">
+                                    <span id="menu-btn"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header close -->
+        <!-- content begin -->
+        <div class="no-bottom no-top" id="content">
+            <div id="top"></div>
+
+            <!-- page preloader begin -->
+            <div id="preloader">
+                <div class="preloader1"></div>
+            </div>
+            <!-- page preloader close -->
+            
+            <!-- float text begin -->
+            <div class="float-text">
+                <div class="de_social-icons">
+                    <a href="{{ socials.facebook }}"><i class="fa fa-facebook fa-lg"></i></a>
+                    <a href="{{ socials.twitter }}"><i class="fa fa-twitter fa-lg"></i></a>
+                    <a href="{{ socials.instagram }}"><i class="fa fa-instagram fa-lg"></i></a>
+                </div>
+                <span>من را دنبال کنید</span>
+            </div>
+            <!-- float text close --> 
+
+            <!-- load external content begin -->
+            <div id="de_modal">
+                <button class="button-close"></button>
+                <div class="d-modal-loader"></div>
+            </div>
+             <!-- load external content close -->
+
+            <section class="no-top no-bottom jarallax position-relative" aria-label="section" data-video-src="mp4:{% static 'home_app/video/local-video-1.mp4' %}">
+                <div class="v-center">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <h6 class="wow fadeInUp" data-wow-delay=".4s"><span class="id-color">من {{ info.name }} {{ info.lname }} هستم</span></h6>
+                                <div class="spacer-10"></div>
+                                <div class="h1_big text-white wow fadeInUp" data-wow-delay=".6s">
+                                    <div class="typed-strings">
+                                        {% for text in main_texts %}
+                                        <p>{{ text }}</p>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="typed"></div>
+                                </div>
+                            </div>
+                            <div class="spacer-20"></div>
+                            <ul class="list_location wow fadeInUp" data-wow-delay=".8s">
+                                    <li><span>{{ info.country }}</span>{{ info.city }} ، {{ info.district }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <a href="#section-about" class="mouse-icon-click scroll-to wow fadeInUp" data-wow-delay=".8s">
+                    <span class="mouse fadeScroll relative" data-scroll-speed="10">
+                        <span class="scroll"></span>
+                    </span>
+                </a>
+                <div class="de-gradient-edge-bottom"></div>
+            </section>
+            <section id="section-about">
+                <div class="container relative">
+                    <div class="row">
+                        <div class="col-md-12 text-center wow fadeInUp">
+                            <h2>درمورد من</h2>
+                            <div class="space-border"></div>
+                        </div>
+                        <div class="col-md-8 offset-md-2 text-center wow fadeInUp">
+                            <p>{{ about.text }}</p>
+                        </div>
+                        <div class="spacer-single"></div>
+                        {% for ability in abilitys %}
+                        <div class="col-lg-3 position-relative wow fadeIn" data-wow-delay=".{{ ability.time_view }}s">
+                            <div class="position-relative">
+                                <div class="progressbar" data-animate="false">
+                                    <div class="circle" data-percent="{{ ability.value }}">
+                                        <div></div>
+                                    </div>
+                                    <h4>{{ ability.name }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+            <section id="section-my-quote" aria-label="section" class="jarallax no-top no-bottom">
+                <div class="de-gradient-edge-top"></div>
+                <img src="{% static 'home_app/images/background/2.jpg' %}" class="jarallax-img" alt="">
+                <div class="v-center">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-10 offset-md-1">
+                                <blockquote class="q-big wow fadeIn" data-wow-duration="3s">
+                                    <i class="d-big icon_quotations"></i>
+                                    سخت ترین چیز در زندگی تصمیم برای شروع کار است. در ادامه فقط تلاش و پشتکار لازم است. ترس ها ببرهای کاغذی اند. از پس هرچه بخواهید، برمی آیید. شما می توانید برای تغییر و کنترل زندگیِ خود دست به کار شوید. بعدازآن، کلید و راه حل، پاداش تان خواهد بود.
+                                    <span class="d-quote-by">امیلی ایرهار</span>
+                                </blockquote>
+                                <div class="spacer-double"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="de-gradient-edge-bottom"></div>
+            </section>
+            <section id="section-services" class="no-bottom">
+                <div class="container relative">
+                    <div class="row">
+                        <div class="col-md-12 text-center wow fadeInUp">
+                            <h2>کاری که من انجام می دهم</h2>
+                            <div class="space-border"></div>
+                        </div>
+                        <div class="spacer-single"></div>
+                        <div class="row g-0">
+                            {% for ability in abilityinfos %}
+                            <div class="col-lg-4 wow fadeIn" data-wow-delay=".{{ ability.time_view }}s">
+                                <div class="de_3d-box">
+                                    <div class="d-inner">
+                                        <i class="icon_genius id-color"></i>
+                                        <div class="text">
+                                            <h3>{{ ability.name }}</h3>
+                                            {{ ability.text }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}  
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- <section id="section-portfolio" class="no-bottom">
+                <div class="container relative">
+                    <div class="row">
+                        <div class="col-md-12 text-center wow fadeInUp">
+                            <h2>نمونه کارها</h2>
+                            <div class="space-border"></div>
+                        </div>
+                    </div>
+                    <div id="gallery" class="row sequence">
+                        <div class="col-md-4 item">
+                            <div class="de_modal wow" data-url="single-project.html">
+                                <div class="card-image-1 mod-c" data-tilt>
+                                    <div class="d-text">
+                                        <h3>تک تصویر</h3>
+                                        <h5 class="d-tag">سایت اینترنتی</h5>
+                                    </div>
+                                    <img src="images/gallery/1.jpg" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 item">
+                            <div class="de_modal wow" data-url="single-project-2.html">
+                                <div class="card-image-1 mod-c" data-tilt>
+                                    <div class="d-text">
+                                        <h3>چند تصویر</h3>
+                                        <h5 class="d-tag">سایت اینترنتی</h5>
+                                    </div>
+                                    <img src="images/gallery/2.jpg" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 item">
+                            <div class="de_modal wow" data-url="single-project-3.html">
+                                <div class="card-image-1 mod-c" data-tilt>
+                                    <div class="d-text">
+                                        <h3>ویدیوی میزبان</h3>
+                                        <h5 class="d-tag">سایت اینترنتی</h5>
+                                    </div>
+                                    <img src="images/gallery/3.jpg" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 item">
+                            <div class="de_modal wow" data-url="single-project.html">
+                                <div class="card-image-1 mod-c" data-tilt>
+                                    <div class="d-text">
+                                        <h3>برنامه تلویزیونی</h3>
+                                        <h5 class="d-tag">سایت اینترنتی</h5>
+                                    </div>
+                                    <img src="images/gallery/4.jpg" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 item">
+                            <div class="de_modal wow" data-url="single-project.html">
+                                <div class="card-image-1 mod-c" data-tilt>
+                                    <div class="d-text">
+                                        <h3>میزبانی اوست</h3>
+                                        <h5 class="d-tag">سایت اینترنتی</h5>
+                                    </div>
+                                    <img src="images/gallery/5.jpg" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 item">
+                            <div class="de_modal wow" data-url="single-project.html">
+                                <div class="card-image-1 mod-c" data-tilt>
+                                    <div class="d-text">
+                                        <h3>ثبت دامنه</h3>
+                                        <h5 class="d-tag">سایت اینترنتی</h5>
+                                    </div>
+                                    <img src="images/gallery/6.jpg" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <section id="section-resume">
+                <div class="container relative">
+                    <div class="row">
+                        <div class="col-md-12 text-center wow fadeInUp">
+                            <h2>رزومه من</h2>
+                            <div class="space-border"></div>
+                        </div>
+                    </div>
+                    <div class="row gh-5">
+                        <div class="col-lg-6 wow fadeInUp">
+                            <div class="p-4">
+                                <h3 class="s_border">تجربیات</h3>
+                                <ul class="d_timeline">
+                                    {% for experience in experiences %}
+                                    <li class="d_timeline-item">
+                                        <h3 class="d_timeline-title">{{ experience.start_time }} - {{ experience.end_time }}</h3>
+                                        <p class="d_timeline-text"><span class="d_title">{{ experience.name }}</span><span class="d_company">{{ experience.company }}</span> {{ experience.info }} </p>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp">
+                            <div class="p-4">
+                                <h3 class="s_border">تحصیلات</h3>
+                                <ul class="d_timeline">
+                                    {% for education in educations %}
+                                    <li class="d_timeline-item">
+                                        <h3 class="d_timeline-title">{{ education.start_time }} - {{ education.end_time }}</h3>
+                                        <p class="d_timeline-text"><span class="d_title">{{ education.name }}</span><span class="d_company">{{ education.company }}</span>{{ education.info }}</p>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-fun-facts" aria-label="section" class="jarallax">
+                <div class="de-gradient-edge-top"></div>
+                <img src="{% static 'home_app/images/background/3.jpg' %}" class="jarallax-img" alt="">
+                <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 wow fadeIn" data-wow-delay="0">
+                                <div class="de_count text-center">
+                                    <h3 class="timer" data-to="{{ overviews.working_time }}" data-speed="2500">0</h3>
+                                    <span>ساعت کار</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 wow fadeIn" data-wow-delay=".25s">
+                                <div class="de_count text-center">
+                                    <h3 class="timer" data-to="{{ overviews.completed_projects }}" data-speed="2500">0</h3>
+                                    <span>پروژه های انجام شده</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 wow fadeIn" data-wow-delay=".5s">
+                                <div class="de_count text-center">
+                                    <h3 class="timer" data-to="{{ overviews.satisfied_customers }}" data-speed="2500">0</h3>
+                                    <span>مشتریان راضی</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 wow fadeIn" data-wow-delay=".75s">
+                                <div class="de_count text-center">
+                                    <h3 class="timer" data-to="{{ overviews.prizes_won }}" data-speed="2500">0</h3>
+                                    <span>جوایز برنده</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="de-gradient-edge-bottom"></div>
+            </section>
+            <!-- <section id="section-blog" class="no-bottom">
+                <div class="container relative">
+                    <div class="row">
+                        <div class="col-md-12 text-center wow fadeInUp">
+                            <h2>وبلاگ</h2>
+                            <div class="space-border"></div>
+                        </div>
+                    </div>
+                    <div id="carousel-blog" class="owl-carousel wow fadeInUp">
+                        <div class="bloglist item">
+                            <div class="post-content">
+                                <div class="post-image">
+                                    <div class="de_modal" data-url="single-blog.html"><img alt="" src="images/blog/1.jpg" class="lazy grayscale"></div>
+                                </div>
+                                <div class="post-text">
+                                    <h4 class="de_modal" data-url="single-blog.html">چگونه رابط کاربری بهتری ایجاد کنیم</h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و  ...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bloglist item">
+                            <div class="post-content">
+                                <div class="post-image">
+                                    <div class="de_modal" data-url="single-blog.html"><img alt="" src="images/blog/2.jpg" class="lazy grayscale"></div>
+                                </div>
+                                <div class="post-text">
+                                    <h4 class="de_modal" data-url="single-blog.html">10 نکته طراحی وب از متخصصان</h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و  ...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bloglist item">
+                            <div class="post-content">
+                                <div class="post-image">
+                                    <div class="de_modal" data-url="single-blog.html"><img alt="" src="images/blog/3.jpg" class="lazy grayscale"></div>
+                                </div>
+                                <div class="post-text">
+                                    <h4 class="de_modal" data-url="single-blog.html">اهمیت طراحی وب</h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و  ...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bloglist item">
+                            <div class="post-content">
+                                <div class="post-image">
+                                    <div class="de_modal" data-url="single-blog.html"><img alt="" src="images/blog/4.jpg" class="lazy grayscale"></div>
+                                </div>
+                                <div class="post-text">
+                                    <h4 class="de_modal" data-url="single-blog.html">10 نکته طراحی وب از متخصصان</h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و  ...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bloglist item">
+                            <div class="post-content">
+                                <div class="post-image">
+                                    <div class="de_modal" data-url="single-blog.html"><img alt="" src="images/blog/5.jpg" class="lazy grayscale"></div>
+                                </div>
+                                <div class="post-text">
+                                    <h4 class="de_modal" data-url="single-blog.html">اهمیت طراحی وب</h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و  ...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bloglist item">
+                            <div class="post-content">
+                                <div class="post-image">
+                                    <div class="de_modal" data-url="single-blog.html"><img alt="" src="images/blog/6.jpg" class="lazy grayscale"></div>
+                                </div>
+                                <div class="post-text">
+                                    <h4 class="de_modal" data-url="single-blog.html">نکاتی برای دندانهای سالم<span></span></h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و  ...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <section id="section-contact" class="jarallax">
+                <div class="de-gradient-edge-top"></div>
+                <img src="{% static 'home_app/images/background/5.jpg' %}" class="jarallax-img" alt="">
+                <div class="container z-index-1000">
+                    <div class="row">
+                        <div class="col-md-12 text-center wow fadeInUp">
+                            <h2>با من تماس بگیر</h2>
+                            <div class="space-border"></div>
+                        </div>
+                        <div class="col-lg-8 offset-lg-2 wow fadeInUp">
+                            <div class="contact_form_wrapper">
+                                <form name="contactForm" id="contact_form" class="form-border" method="post" action="#">
+                                    
+                                    {% csrf_token %}
+                                    
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="field-set">
+                                                <input type="text" name="name" id="name" class="form-control" placeholder="اسم شما" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="field-set">
+                                                <input type="text" name="email" id="email" class="form-control" placeholder="ایمیل شما" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="field-set">
+                                                <input type="text" name="phone" id="phone" class="form-control" placeholder="شماره موبایل" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="field-set">
+                                            <textarea name="message" id="message" class="form-control" placeholder="پیغام خود را بنویسید" required></textarea>
+                                        </div>
+                                        <!-- <div class="g-recaptcha" data-sitekey="6LdSml8jAAAAAAkDrSxAUpfyxIjLF_kMtRKDYlIs"></div> -->
+                                        <div id='submit' class="mt10">
+                                            <input type='submit' id='send_message' value='ارسال پیام' class="btn-main">
+                                        </div>
+
+                                        <div id="success_message" class='success'>
+                                            پیغام شما با موفقیت ارسال گردید.اگر می خواهید پیام های بیشتری ارسال کنید ، این صفحه را تازه کنید.
+                                        </div>
+                                        <div id="error_message" class='error'>
+                                            با عرض پوزش خطایی برای ارسال فرم شما وجود داشت.
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="spacer-double"></div>
+                            <div class="row text-center wow fadeInUp">
+                                <div class="col-md-4">
+                                    <div class="wm-1"></div>
+                                    <h6>به من ایمیل بزنید</h6>
+                                    <p>{{ info.email }}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="wm-1"></div>
+                                    <h6>با من تماس بگیر</h6>
+                                    <p>{{ info.number }}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="wm-1"></div>
+                                    <h6>نشانی</h6>
+                                    <p>{{ info.address }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="de-gradient-edge-bottom"></div>
+            </section>
+        </div>
+        <!-- content close -->
+        <a href="#" id="back-to-top"></a>
+        <!-- footer begin -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="">
+                            <span class="copy">&copy; کپی رایت 2022 - کلیه حقوق محفوظ است.</span>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="social-icons">
+                            <a href="{{ socials.facebook }}"><i class="fa fa-facebook fa-lg"></i></a>
+                            <a href="{{ socials.twitter }}"><i class="fa fa-twitter fa-lg"></i></a>
+                            <a href="{{ socials.linkedin }}"><i class="fa fa-linkedin fa-lg"></i></a>
+                            <!-- <a href="#"><i class="fa fa-pinterest fa-lg"></i></a>
+                            <a href="#"><i class="fa fa-rss fa-lg"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer close -->
+    </div>
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="{% static 'home_app/js/plugins.js' %}"></script>
+    <script src="{% static 'home_app/js/designesia.js' %}"></script>
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+    <!-- <script src="{% static 'home_app/js/form.js' %}"></script> -->
+    <script>
+    jQuery(function($) {
+        $('.g-recaptcha').attr('data-theme', 'dark');
+    });
+    </script>
+    <script>
+    jQuery(document).ready(function() {
+        $(function() {
+            // jquery typed plugin
+            $(".typed").typed({
+                stringsElement: $('.typed-strings'),
+                typeSpeed: 100,
+                backDelay: 500,
+                loop: true,
+                contentType: 'html', // or text
+                // defaults to false for infinite loop
+                loopCount: false,
+                callback: function() { null; },
+                resetCallback: function() { newTyped(); }
+            });
+        });
+    });
+    </script>
+</body>
+
+
+ 
+</html>
