@@ -6,7 +6,7 @@
  
 <head>
     <title>{{ info.website.title }}</title>
-    <link rel="icon" href="{% static 'home_app/images/icon.png' %}" type="image/gif" sizes="16x16">
+    <link rel="icon" href="{{ logos.website_icon }}" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Kyros - Personal Website" name="description" />
@@ -39,8 +39,8 @@
                                     <!-- logo begin -->
                                     <div id="logo">
                                         <a href="#top">
-                                            <img alt="" class="logo" src="{% static 'home_app/images/logo.png' %}" />
-                                            <img alt="" class="logo-2" src="{% static 'home_app/images/logo.png' %}" />
+                                            <img alt="" class="logo" src="{{ logos.desktop_logo }}" />
+                                            <img alt="" class="logo-2" src="{{ logos.mobile_logo }}" />
                                         </a>
                                     </div>
                                     <!-- logo close -->
