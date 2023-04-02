@@ -8,6 +8,7 @@ from contact_app.models import Message
 info = Info.objects.all().first
 main_text = MainText.objects.all()
 social = Social.objects.all().first
+logo = Logo.objects.all().first
 
 about = About.objects.all().first
 ability = Ability.objects.all()
@@ -46,6 +47,7 @@ def main_page(request):
         "abilityinfos": abilityinfo,
         "educations": education,
         "experiences": experience,
-        "overviews": overview
+        "overviews": overview,
+        "logos": logo
         }
     )
