@@ -24,9 +24,9 @@ class MainText(models.Model):
 
 class Logo(models.Model):
 
-    website_icon = models.ImageField()
-    desktop_logo = models.ImageField()
-    mobile_logo = models.ImageField()
+    website_icon = models.ImageField(upload_to= "LOGOS")
+    desktop_logo = models.ImageField(upload_to= "LOGOS")
+    mobile_logo = models.ImageField(upload_to= "LOGOS")
 
 class Social(models.Model):
 
